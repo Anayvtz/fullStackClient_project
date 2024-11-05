@@ -1,17 +1,22 @@
 import { Route, Routes } from "react-router-dom";
 import ROUTES from "./routesModel";
 import LoginPage from "../user/pages/LoginPage";
+import YarnsPage from "../yarns/pages/YarnsPage";
 
 export default function Router() {
     return (
         <Routes>
             {
-                /* <Route path={ROUTES.ROOT} element={<YarnsPage />} />
+               <Route path={ROUTES.LOGIN} element={<LoginPage />} />
+
                 <Route path={ROUTES.YARNS} element={<YarnsPage />} />
-                <Route path={ROUTES.ABOUT} element={<AboutPage />} />
-                */
-                <Route path={ROUTES.LOGIN} element={<LoginPage />} />
                 /*
+                 <Route path={ROUTES.ROOT} element={<YarnsPage />} />
+                
+
+                
+                <Route path={ROUTES.ABOUT} element={<AboutPage />} />
+                
                 <Route path={ROUTES.MY_CART} element={<MyCartPage />} />
                 <Route path={ROUTES.SIGNUP} element={<SignupPage />} />
                 <Route path={ROUTES.YARN_INFO + "/:id"} element={<YarnDetailsPage />} />

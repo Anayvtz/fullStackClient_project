@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useCurrentUser } from "../../user/providers/UserProvider";
 import { useSnack } from "../../utils/providers/SnackbarProvider";
+import { createYarn, deleteYarn, editYarn, getYarn, getYarnBySize } from "../services/yarnsApiService";
 
 export default function useYarns() {
     const [yarns, setYarns] = useState([]);
@@ -73,9 +74,9 @@ export default function useYarns() {
                 setIsLoading(true);
 
 
-                const yarn = await createCard(yarnFromClient);
-                requestStatus(false, null, null, card);
-                setSnack("success", "A new business card has been created");
+                const yarn = await createYarn(yarnFromClient);
+                requestStatus(false, null, null, yarn);
+                setSnack("success", "A new yarn has been created");
                 setTimeout(() => {
                     navigate(ROUTES.ROOT);
                 }, 1000);
@@ -86,22 +87,13 @@ export default function useYarns() {
         },
         [setSnack, navigate]
     );
-    const handleGetMyCards = useCallback(async () => {
-        try {
-            setIsLoading(true);
-            const cards = await getMyCards();
-            requestStatus(false, null, cards);
-        } catch (error) {
-            requestStatus(false, error, null);
-            setSnack("error", error.message);
-        }
-    }, [setSnack]);
 
 
-    const handleDelete = useCallback(async (cardId) => {
+
+    const handleDelete = useCallback(async (yarnId) => {
         try {
             setIsLoading(true);
-            await deleteCard(cardId);
+            await deleteYarn(yarnId);
             setIsLoading(false);
         } catch (error) {
             setIsLoading(false);
@@ -109,13 +101,13 @@ export default function useYarns() {
         }
     }, []);
 
-    const handleUpdateCard = useCallback(
-        async (cardId, cardFromClient) => {
+    const handleUpdateYarn = useCallback(
+        async (yarnId, yarnFromClient) => {
             try {
                 setIsLoading(true);
-                const card = await editCard(cardId, cardFromClient);
-                requestStatus(false, null, null, card);
-                setSnack("success", "The business card has been successfully updated");
+                const yarn = await editYarn(yarnId, yarnFromClient);
+                requestStatus(false, null, null, yarn);
+                setSnack("success", "The yarn has been successfully updated");
                 setTimeout(() => {
                     navigate(ROUTES.ROOT);
                 }, 1000);
@@ -126,39 +118,24 @@ export default function useYarns() {
         [setSnack, navigate]
     );
 
-    const handleGetCard = useCallback(async (cardId) => {
+    const handleGetYarn = useCallback(async (yarnId) => {
         try {
             setIsLoading(true);
-            const card = await getCard(cardId);
-            requestStatus(false, null, null, card);
-            return card;
+            const yarn = await getYarn(yarnId);
+            requestStatus(false, null, null, yarn);
+            return yarn;
         } catch (error) {
             requestStatus(false, error, null);
         }
     }, []);
 
-    const handleLike = useCallback(
-        async (cardId) => {
-            try {
-                await changeLikeStatus(cardId);
-                setSnack("success", "The business card has been Liked");
-            } catch (error) {
-                requestStatus(false, error, null);
-            }
-        },
-        [setSnack]
-    );
-
-    const handleGetFavCards = useCallback(async () => {
+    const handleGetYarnBySize = useCallback(async (size) => {
         try {
             setIsLoading(true);
-            const cards = await getCards();
-            console.log("cards are:" + cards);
+            const yarns = await getYarnBySize(size);
+            console.log("yarns are:" + yarns);
             console.log("user id is:" + user.user._id);
-
-
-            const favCards = cards.filter((card) => card.likes.includes(user?.user?._id));
-            requestStatus(false, null, favCards);
+            requestStatus(false, null, yarns);
         } catch (error) {
             requestStatus(false, error, null);
         }
@@ -173,11 +150,9 @@ export default function useYarns() {
         getAllYarns,
         getYarnById,
         handleDelete,
-        handleLike,
         handleCreateYarn,
-        handleGetMyCards,
-        handleUpdateCard,
-        handleGetCard,
-        handleGetFavCards,
+        handleGetYarnBySize,
+        handleUpdateYarn,
+        handleGetYarn,
     };
 }

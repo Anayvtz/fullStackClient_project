@@ -1,25 +1,26 @@
 import React from 'react'
+import useYarns from '../hooks/useYarns';
+import YarnsFeedback from '../components/YarnsFeedback';
 
 export default function YarnsPage() {
-    const { cards, filterCards, error, isLoading, getAllCards, handleDelete } =
-        useCards();
+    const { yarns, filterYarns, error, isLoading, getAllYarns, handleDelete } =
+        useYarns();
 
     useEffect(() => {
-        getAllCards();
+        getAllYarns();
     }, []);
 
     return (
         <div>
             <PageHeader
-                title="Cards"
-                subtitle="On this page you can find all bussines cards from all categories"
+                title="Yarns"
+                subtitle="On this page you can find all the yarns in the shop"
             />
-            <CardsFeedback
-                cards={filterCards}
+            <YarnsFeedback
+                yarns={filterYarns}
                 isLoading={isLoading}
                 error={error}
                 handleDelete={handleDelete}
-                handleLike={handleLike}
             />
         </div>
     );
