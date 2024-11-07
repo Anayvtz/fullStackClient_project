@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useCurrentUser } from "../../user/providers/UserProvider";
 import { useSnack } from "../../utils/providers/SnackbarProvider";
 import { createYarn, deleteYarn, editYarn, getYarn, getYarnBySize } from "../services/yarnsApiService";
+import useAxios from "../../utils/hooks/useAxios";
+import axios from "axios";
 
 export default function useYarns() {
     const [yarns, setYarns] = useState([]);
@@ -44,6 +46,8 @@ export default function useYarns() {
 
     const getAllYarns = useCallback(async () => {
         try {
+            console.log("getAllYarns B4 axios");
+
             let response = await axios.get(
                 apiUrl
             );

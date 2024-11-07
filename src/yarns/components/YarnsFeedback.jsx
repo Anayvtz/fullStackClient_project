@@ -1,5 +1,6 @@
+import { Typography } from "@mui/material";
 import Error from "../../utils/others/Error";
-import Spinner from "../../utils/others/Spinner,jsx";
+import Spinner from "../../utils/others/Spinner";
 import Yarns from "./Yarns";
 
 export default function YarnsFeedback({

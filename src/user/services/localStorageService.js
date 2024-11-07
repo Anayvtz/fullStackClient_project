@@ -13,7 +13,12 @@ export const getToken = () => localStorage.getItem(TOKEN);
 export const getUser = () => {
     try {
         const myToken = getToken();
-        return jwtDecode(myToken);
+        console.log("getUser: mytoken:", myToken);
+
+        const user = jwtDecode(myToken);
+        console.log("get user: user:", user);
+        return user;
+
     } catch (err) {
         return null;
     }

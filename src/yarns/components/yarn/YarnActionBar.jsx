@@ -13,9 +13,14 @@ export default function YarnActionBar({
     handleDelete,
     handleEdit
 }) {
-    const user = useCurrentUser();
+    const { user } = useCurrentUser();
     const navigate = useNavigate();
-    const { handleAddYarnToCart, handleRmvYarnFromCart } = useUsers();
+    const { handleRmvYarnFromCart } = useUsers();
+    /* handleAddYarnToCart(userId, { yarnId: yarnId, image: yarnImage, quantity: 1 }); */
+    console.log("YarnActionBar: userid:", user._id);
+    console.log("YarnActionBar: user.userid:", user?.user?._id);
+
+
     return (
         <CardActions sx={{ justifyContent: "space-between" }}>
             {user?.user?.isAdmin ? (
@@ -31,11 +36,11 @@ export default function YarnActionBar({
                 </Box>) : null}
             {!user?.user?.isAdmin ? (
                 <Box>
-                    <IconButton onClick={() => handleRmvYarnFromCart(yarnId)}>
+                    <IconButton onClick={async () => await handleRmvYarnFromCart(yarnId)}>
                         <DeleteIcon />
                     </IconButton>
 
-                    <YarnAmountControl handleAddToCart={handleAddYarnToCart} yarnId={yarnId} yarnImage={yarnImage} />
+                    <YarnAmountControl userId={user._id} yarnId={yarnId} yarnImage={yarnImage} />
                 </Box>) : null}
         </CardActions >
     );
