@@ -30,6 +30,7 @@ export default function YarnComponent({
             <YarnActionBar
                 yarnId={yarn._id}
                 yarnImage={yarn.image}
+                yarnPrice={yarn.price}
                 handleDelete={handleDelete}
                 handleEdit={handleEdit}
             />

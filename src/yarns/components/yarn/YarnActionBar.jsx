@@ -10,6 +10,7 @@ import useUsers from "../../../user/hooks/useUsers";
 export default function YarnActionBar({
     yarnId,
     yarnImage,
+    yarnPrice,
     handleDelete,
     handleEdit
 }) {
@@ -40,7 +41,7 @@ export default function YarnActionBar({
                         <DeleteIcon />
                     </IconButton>
 
-                    <YarnAmountControl userId={user?._id} yarnId={yarnId} yarnImage={yarnImage} />
+                    <YarnAmountControl userId={user?._id} yarnId={yarnId} yarnImage={yarnImage} yarnPrice={yarnPrice} />
                 </Box>) : null}
         </CardActions >
     );

@@ -4,7 +4,7 @@ import React, { useEffect, useMemo, useState } from 'react'
 import useUsers from '../../../user/hooks/useUsers';
 import { useSnack } from '../../../utils/providers/SnackbarProvider';
 
-export default function YarnAmountControl({ userId, yarnId, yarnImage }) {
+export default function YarnAmountControl({ userId, yarnId, yarnImage, yarnPrice }) {
     const [amount, setAmount] = useState(0);
     const { handleAddYarnToCart } = useUsers();
     const setSnack = useSnack();
@@ -23,7 +23,8 @@ export default function YarnAmountControl({ userId, yarnId, yarnImage }) {
         return {
             yarnId: yarnId,
             image: yarnImage,
-            quantity: amount
+            quantity: amount,
+            price: yarnPrice
         };
     }, [yarnId, yarnImage, amount]);
 
