@@ -15,7 +15,7 @@ export default function useYarns() {
     const [query, setQuery] = useState("");
     const [searchParams] = useSearchParams();
 
-    const user = useCurrentUser();
+    const { user } = useCurrentUser();
     const setSnack = useSnack();
     const navigate = useNavigate();
 
@@ -45,6 +45,7 @@ export default function useYarns() {
 
 
     const getAllYarns = useCallback(async () => {
+        setIsLoading(true);
         try {
             console.log("getAllYarns B4 axios");
 
@@ -74,8 +75,9 @@ export default function useYarns() {
 
     const handleCreateYarn = useCallback(
         async (yarnFromClient) => {
+            setIsLoading(true);
             try {
-                setIsLoading(true);
+
 
 
                 const yarn = await createYarn(yarnFromClient);
@@ -88,6 +90,7 @@ export default function useYarns() {
                 requestStatus(false, error, null);
                 setSnack("error", error.message);
             }
+            setIsLoading(false);
         },
         [setSnack, navigate]
     );

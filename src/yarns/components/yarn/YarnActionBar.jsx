@@ -17,8 +17,8 @@ export default function YarnActionBar({
     const navigate = useNavigate();
     const { handleRmvYarnFromCart } = useUsers();
     /* handleAddYarnToCart(userId, { yarnId: yarnId, image: yarnImage, quantity: 1 }); */
-    console.log("YarnActionBar: userid:", user._id);
-    console.log("YarnActionBar: user.userid:", user?.user?._id);
+    console.log("YarnActionBar: userid:", user?._id);
+
 
 
     return (
@@ -40,7 +40,7 @@ export default function YarnActionBar({
                         <DeleteIcon />
                     </IconButton>
 
-                    <YarnAmountControl userId={user._id} yarnId={yarnId} yarnImage={yarnImage} />
+                    <YarnAmountControl userId={user?._id} yarnId={yarnId} yarnImage={yarnImage} />
                 </Box>) : null}
         </CardActions >
     );

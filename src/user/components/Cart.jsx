@@ -6,6 +6,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useCurrentUser } from '../providers/UserProvider';
 import useUsers from '../hooks/useUsers';
 import ROUTES from '../../routes/routesModel';
+import useOrders from '../../orders/hooks/useOrders';
 
 export default function Cart({ cart }) {
     const navigate = useNavigate();
