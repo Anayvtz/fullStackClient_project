@@ -8,7 +8,7 @@ export default function YarnAmountControl({ userId, yarnId, yarnImage, yarnPrice
     const [amount, setAmount] = useState(0);
     const { handleAddYarnToCart } = useUsers();
     const setSnack = useSnack();
-    console.log("YarnAmountControl: userid:", userId);
+
 
     const inc = () => {
         setAmount(prev => prev + 1);

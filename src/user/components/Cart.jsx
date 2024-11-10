@@ -14,7 +14,7 @@ export default function Cart({ cart }) {
     const { user } = useCurrentUser();
     const { handleGetUserCart, handleRmvYarnFromCart } = useUsers();
     const { handleMvCartToOrders } = useOrders();
-    console.log("CartEntityComponent. userid:", user._id);
+
 
     const handleDelete = async (cartItemId, yarnId) => {
         await handleRmvYarnFromCart(yarnId);
@@ -23,6 +23,8 @@ export default function Cart({ cart }) {
 
     const handlePayment = async () => {
         await handleMvCartToOrders(cartItems);
+        cart = [];
+        navigate(ROUTES.MY_ORDERS)
     }
 
     const handleContinueShopping = () => {
@@ -36,7 +38,7 @@ export default function Cart({ cart }) {
             <Box>
 
                 {cartItems.map(item => {
-                    console.log("cart item", item);
+
                     return (
                         <Card key={item._id} sx={{ display: 'flex', marginBottom: 2 }}>
                             <CardMedia component="img"

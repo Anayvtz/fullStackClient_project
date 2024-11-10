@@ -6,6 +6,8 @@ import useUsers from '../../../user/hooks/useUsers';
 export default function Logout() {
     const { handleLogout } = useUsers();
     const { email } = useCurrentUser();
+    console.log("in Logout EMAIL:", email);
+
     return (
         <IconButton sx={{ p: 0, display: "inline-flex", flexDirection: "column", marginLeft: 2 }} onClick={() => { handleLogout(); }}>
             <Typography>Logout</Typography>
