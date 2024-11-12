@@ -13,9 +13,9 @@ export default function LeftNavBar() {
             <Logo />
             <NavBarItem to={ROUTES.YARNS} label={"Yarns"} />
             <NavBarItem to={ROUTES.ABOUT} label={"About"} />
-            {user?.user?._id && !user?.user?.isAdmin && <NavBarItem to={ROUTES.MY_CART} label={"Cart"} />}
-            {user?.user?._id && !user?.user?.isAdmin && <NavBarItem to={ROUTES.MY_ORDERS} label={"Orders"} />}
-            {user?.user?._id && user?.user?.isAdmin && <NavBarItem to={ROUTES.STOCKS} label={"Stocks"} />}
+            {user?._id && !user?.isAdmin && <NavBarItem to={ROUTES.MY_CART} label={"Cart"} />}
+            {user?._id && !user?.isAdmin && <NavBarItem to={ROUTES.MY_ORDERS} label={"Orders"} />}
+            {user?._id && user?.isAdmin && <NavBarItem to={ROUTES.STOCKS} label={"Stocks"} />}
 
         </Box>
     );

@@ -24,7 +24,7 @@ export default function YarnActionBar({
 
     return (
         <CardActions sx={{ justifyContent: "space-between" }}>
-            {user?.user?.isAdmin ? (
+            {user?.isAdmin ? (
                 <Box>
 
                     <IconButton onClick={() => handleDelete(yarnId)}>
@@ -35,7 +35,7 @@ export default function YarnActionBar({
                         <ModeEditIcon />
                     </IconButton>
                 </Box>) : null}
-            {!user?.user?.isAdmin ? (
+            {!user?.isAdmin ? (
                 <Box>
                     <IconButton onClick={async () => await handleRmvYarnFromCart(yarnId)}>
                         <DeleteIcon />
