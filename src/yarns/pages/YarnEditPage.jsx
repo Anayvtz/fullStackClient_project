@@ -10,6 +10,7 @@ import useYarns from "../hooks/useYarns";
 import YarnForm from "../components/YarnForm";
 import { Navigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
+import InitialYarnCtor from "../helpers/initialForm/initialYarnCtor";
 
 export default function YarnEditPage() {
     //what do we need in this page
@@ -43,8 +44,9 @@ export default function YarnEditPage() {
     }, [handleGetYarn, setData, id]);
 
     const handleImageUpload = async (file) => {
-        const formData = new initialYarnForm();
+        const formData = new FormData();
         formData.append('image', file);  // Append the file
+        console.log("YarnEditPage.handleImageUpload formData:", formData);
 
         try {
             const response = await fetch('http://localhost:8185/upload-image', {
@@ -54,10 +56,10 @@ export default function YarnEditPage() {
 
             const data = await response.json();
 
-            if (data.image.imageurl) {
+            if (data.imageurl) {
                 setData((prevData) => ({
                     ...prevData,
-                    imageurl: data.image.imageurl, // Set the returned image URL
+                    imageurl: data.imageurl, // Set the returned image URL
                 }));
             }
         } catch (error) {
