@@ -4,6 +4,8 @@ const apiUrl = "http://localhost:8185/orders";
 
 export const createOrder = async (userId, cart) => {
     try {
+        console.log("createOrder. userId:", userId);
+
         const order = await axios.post(`${apiUrl}/${userId}`, cart);
         return order;
     } catch (error) {

@@ -62,7 +62,7 @@ export default function useUsers() {
             await handleLogin({ email: userInfo.email, password: userInfo.password });
         } catch (error) {
 
-            console.error("Error making request:", error.message); // Log error message
+            console.error("Error handleRegister making request:", error.message); // Log error message
             if (error.response) {
                 // The request was made and the server responded with a status code
                 // that falls out of the range of 2xx

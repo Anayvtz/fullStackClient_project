@@ -23,7 +23,7 @@ export default function Cart({ cart }) {
 
     const handlePayment = async () => {
         await handleMvCartToOrders(cartItems);
-        cart = [];
+        setCartItems([]);
         navigate(ROUTES.MY_ORDERS)
     }
 
@@ -31,19 +31,20 @@ export default function Cart({ cart }) {
         navigate(ROUTES.YARNS);
     }
 
+
     const totalPrice = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
 
     return (
         <Box>
             <Box>
 
-                {cartItems.map(item => {
+                {cartItems?.map(item => {
 
                     return (
                         <Card key={item._id} sx={{ display: 'flex', marginBottom: 2 }}>
                             <CardMedia component="img"
                                 height="140"
-                                image={item.image.url}
+                                image={"http://localhost:8185/" + item.image.imageurl}
                                 alt={item.image.alt}
                                 sx={{ width: 140 }} />
                             <CardContent sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', flex: 1 }}>

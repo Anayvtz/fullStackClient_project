@@ -4,6 +4,7 @@ import ROUTES from "../../../routes/routesModel";
 import YarnHeaderComponent from "./YarnHeaderComponent";
 import YarnActionBar from "./YarnActionBar";
 import { useCurrentUser } from "../../../user/providers/UserProvider";
+import FetchImage from "../FetchImage";
 
 export default function YarnComponent({
     yarn,
@@ -20,7 +21,7 @@ export default function YarnComponent({
                 onClick={() => navigate(ROUTES.YARN_INFO + "/" + yarn._id)}
             >
                 <YarnHeaderComponent
-                    image={yarn.image.url}
+                    image={"http://localhost:8185/" + yarn.image.imageurl}
                     alt={yarn.image.alt}
                     title={yarn.title}
                     subtitle={yarn.subtitle}

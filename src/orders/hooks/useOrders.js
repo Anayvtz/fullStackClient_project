@@ -16,6 +16,8 @@ export default function useOrders() {
 
     const handleMvCartToOrders = async (cart) => {
         setIsLoading(true);
+        console.log("handleMvCartToOrders. cart is:", cart);
+
         try {
             const order = await createOrder(user._id, cart);
             setOrder(order);
