@@ -5,6 +5,7 @@ import YarnHeaderComponent from "./YarnHeaderComponent";
 import YarnActionBar from "./YarnActionBar";
 import { useCurrentUser } from "../../../user/providers/UserProvider";
 import FetchImage from "../FetchImage";
+import YarnBody from "./YarnBody";
 
 export default function YarnComponent({
     yarn,
@@ -26,7 +27,7 @@ export default function YarnComponent({
                     title={yarn.title}
                     subtitle={yarn.subtitle}
                 />
-
+                <YarnBody quantity={yarn.quantityInStock} />
             </CardActionArea>
             <YarnActionBar
                 yarnId={yarn._id}
