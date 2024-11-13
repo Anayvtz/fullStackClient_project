@@ -26,7 +26,7 @@ const YarnForm = ({
 
     return (
         <Form
-            onSubmit={onSubmit}
+            onSubmit={() => onSubmit(data)}
             onReset={onReset}
             errors={errors}
             validateForm={onFormChange}

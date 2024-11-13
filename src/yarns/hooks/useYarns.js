@@ -31,7 +31,7 @@ export default function useYarns() {
             setFilterYarns(
                 yarns.filter(
                     (yarn) =>
-                        yarn.title.includes(query) || String(yarn.size).includes(query)
+                        yarn.title.includes(query) || String(yarn.yarnSize).includes(query)
                 )
             );
     }, [yarns, query]);
@@ -54,6 +54,7 @@ export default function useYarns() {
                 apiUrl
             );
             setYarns(response.data);
+            yarns.map(yarn => console.log("getAllYarns. curr yarn is:", yarn));
             setSnack("success", "All yarns are here!");
         } catch (err) {
             setError(err.message);
@@ -81,15 +82,18 @@ export default function useYarns() {
 
 
 
-                const yarn = await createYarn(yarnFromClient);
-                requestStatus(false, null, null, yarn);
+                const yarnAndStock = await createYarn(yarnFromClient);
+                requestStatus(false, null, null, yarnAndStock.yarn);
                 setSnack("success", "A new yarn has been created");
                 setTimeout(() => {
                     navigate(ROUTES.ROOT);
                 }, 1000);
+                return yarnAndStock.yarn;
             } catch (error) {
                 requestStatus(false, error, null);
                 setSnack("error", error.message);
+                console.log("handleCreateYarn ret err:", error.message);
+
             }
             setIsLoading(false);
         },

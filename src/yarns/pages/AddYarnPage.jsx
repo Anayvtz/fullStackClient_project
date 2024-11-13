@@ -9,6 +9,7 @@ import ROUTES from "../../routes/routesModel";
 import { Container } from "@mui/material";
 import YarnForm from "../components/YarnForm";
 import { useState } from "react";
+import axios from "axios";
 
 export default function AddYarnPage() {
     const { user } = useCurrentUser();
@@ -33,23 +34,30 @@ export default function AddYarnPage() {
             // Step 1: Create Yarn without the image
             /* const response = await axios.post('http://localhost:8185/yarns', formData);
             const newYarn = response.data; */
-            handleCreateYarn({
+            const newYarn = await handleCreateYarn({
                 ...normalizeYarn({ ...data }),
             });
 
             // Step 2: If there's an image, upload it after creating the yarn
-            if (formData.imageurl) {
+            console.log("B4 formData.imageurl", formData.imageurl);
+            console.log("B4 formData:", formData);
+            console.log("B4 formData.image.imageurl", formData.image?.imageurl);
+
+            if (formData.image.imageurl) {
+                console.log("if formData.imageurl:", formData.image.imageurl);
+                console.log("if formData.imageurl:yarn:", newYarn);
+
                 const formDataImage = new FormData();
-                formDataImage.append('image', formData.imageurl);  // Assuming imageurl is a file
-                formDataImage.append('yarnId', yarn._id);  // Add yarnId to associate image with yarn
+                formDataImage.append('image', formData.image.imageurl);  // Assuming imageurl is a file
+                formDataImage.append('yarnId', newYarn?._id);  // Add yarnId to associate image with yarn
 
                 const imageResponse = await axios.post('http://localhost:8185/upload-image', formDataImage);
                 const updatedYarn = imageResponse.data;
-
-                // Step 3: Update the yarn's imageurl in the database
+                console.log("after upload req. updatedYarn:", updatedYarn);
+                /* // Step 3: Update the yarn's imageurl in the database
                 await axios.put(`http://localhost:8185/yarns/${newYarn._id}`, {
                     imageurl: updatedYarn.image.imageurl,
-                });
+                }); */
 
                 // Optionally, update the form with the new image URL
                 setData((prevData) => ({
