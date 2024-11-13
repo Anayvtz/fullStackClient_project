@@ -31,7 +31,8 @@ export default function YarnEditPage() {
         yarnSchema,
         () => {
             handleUpdateYarn(yarn._id, {
-                ...normalizeYarn({ ...data })
+                ...normalizeYarn({ ...data }),
+
             });
         }
     );
@@ -46,6 +47,7 @@ export default function YarnEditPage() {
     const handleImageUpload = async (file) => {
         const formData = new FormData();
         formData.append('image', file);  // Append the file
+        formData.append('yarnId', yarn._id);
         console.log("YarnEditPage.handleImageUpload formData:", formData);
 
         try {

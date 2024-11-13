@@ -85,6 +85,7 @@ const YarnForm = ({
                 data={data}
                 sm={6}
                 required={false}
+                disabled
             />
 
             {/* Drag-and-Drop Upload Box */}
@@ -98,11 +99,11 @@ const YarnForm = ({
                 }}
             >
                 <input {...getInputProps()} />
-                {data.imageurl ? (
+                {data.image.imageurl ? (
                     <div>
                         {/* Show the selected image */}
                         <img
-                            src={data.imageurl}
+                            src={data.image.imageurl}
                             alt="Selected Yarn"
                             style={{
                                 width: "100px",

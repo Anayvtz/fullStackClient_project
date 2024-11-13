@@ -8,6 +8,7 @@ import MyCartPage from "../user/pages/MyCartPage";
 import SignupPage from "../user/pages/SignupPage";
 import MyOrdersPage from "../orders/pages/MyOrdersPage";
 import YarnEditPage from "../yarns/pages/YarnEditPage";
+import AddYarnPage from "../yarns/pages/AddYarnPage";
 
 export default function Router() {
     return (
@@ -25,8 +26,9 @@ export default function Router() {
             <Route path={ROUTES.SIGNUP} element={<SignupPage />} />
             <Route path={ROUTES.MY_ORDERS} element={<MyOrdersPage />} />
             <Route path={ROUTES.EDIT_YARN + "/:id"} element={<YarnEditPage />} />
-            {/*<Route path={ROUTES.YARN_INFO + "/:id"} element={<YarnDetailsPage />} />
             <Route path={ROUTES.CREATE_YARN} element={<AddYarnPage />} />
+            {/*<Route path={ROUTES.YARN_INFO + "/:id"} element={<YarnDetailsPage />} />
+            
             
             
             <Route path={ROUTES.STOCKS} element={<StocksPage />} />

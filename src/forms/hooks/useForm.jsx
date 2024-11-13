@@ -45,7 +45,7 @@ export default function useForm(initialForm, schema, handleSubmit) {
     const validateForm = useCallback(() => {
         const joiSchema = Joi.object(schema);
         const { error } = joiSchema.validate(data);
-        if (error) return false;
+        if (error) { console.log("validateForm error"); return false; }
         return true;
     }, [schema, data]);
 
