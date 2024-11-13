@@ -23,7 +23,7 @@ const YarnForm = ({
             }
         },
     });
-
+    console.log("YarnForm. data:", data);
     return (
         <Form
             onSubmit={() => onSubmit(data)}
@@ -99,11 +99,11 @@ const YarnForm = ({
                 }}
             >
                 <input {...getInputProps()} />
-                {data.image.imageurl ? (
+                {data.imageurl ? (
                     <div>
                         {/* Show the selected image */}
                         <img
-                            src={data.image.imageurl}
+                            src={data.imageurl}
                             alt="Selected Yarn"
                             style={{
                                 width: "100px",

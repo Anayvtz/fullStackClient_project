@@ -62,7 +62,7 @@ export default function AddYarnPage() {
                 // Optionally, update the form with the new image URL
                 setData((prevData) => ({
                     ...prevData,
-                    imageurl: updatedYarn.image.imageurl,
+                    imageurl: updatedYarn.imageurl,
                 }));
             }
 
