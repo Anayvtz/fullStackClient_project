@@ -21,10 +21,12 @@ export default function MyOrders({ orders }) {
         <Box>
             <Box>
                 {orders?.data.map(order => {
-
-                    order.yarns?.map(item => {
+                    console.log("MyOrders. order is:", order);
+                    return order.yarns?.map(item => {
+                        console.log("MyOrders. yarn item is:", item);
                         return (
-                            <Box>
+                            <Box key={item._id} >
+
                                 <Card key={item._id} sx={{ display: 'flex', marginBottom: 2 }}>
                                     <CardMedia component="img"
                                         height="140"
@@ -48,7 +50,7 @@ export default function MyOrders({ orders }) {
                                         </Box>
                                     </CardContent>
                                 </Card>
-                                {/* total price*/}
+
 
                                 <Box mt={2} display="flex" justifyContent="flex-end">
                                     <Typography variant="h5">
