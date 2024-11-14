@@ -9,7 +9,10 @@ export default function MyOrdersPage() {
     const { user } = useCurrentUser();
 
     useEffect(() => {
-        handleGetMyOrders(user?._id);
+        async function fetchOrders() {
+            await handleGetMyOrders(user?._id);
+        }
+        fetchOrders();
     }, [user._id]);
 
     return (

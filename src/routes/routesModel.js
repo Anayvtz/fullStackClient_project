@@ -12,7 +12,8 @@ const ROUTES = {
     EDIT_USER: "/edit-user",
     MY_ORDERS: "/my-orders",
     STOCKS: "/stocks",
-    EDIT_STOCK: "/edit-stock"
+    EDIT_STOCK: "/edit-stock",
+    ALL_ORDERS: "/all-orders"
 };
 
 export default ROUTES;

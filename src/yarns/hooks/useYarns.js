@@ -117,8 +117,11 @@ export default function useYarns() {
         async (yarnId, yarnFromClient) => {
             try {
                 setIsLoading(true);
-                const yarn = await editYarn(yarnId, yarnFromClient);
-                requestStatus(false, null, null, yarn);
+                console.log("handleUpdateYarn yarnFromClient:", yarnFromClient);
+
+                const yarnAndStock = await editYarn(yarnId, yarnFromClient);
+                console.log("handleUpdateYarn after editYarn. ret yarn::", yarnAndStock.yarn);
+                requestStatus(false, null, null, yarnAndStock.yarn);
                 setSnack("success", "The yarn has been successfully updated");
                 setTimeout(() => {
                     navigate(ROUTES.ROOT);

@@ -4,12 +4,13 @@ import { useCurrentUser } from "../../user/providers/UserProvider";
 import useOrders from "../hooks/useOrders";
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
 
-export default function MyOrders({ orders }) {
+export default function AllOrders({ orders }) {
     const navigate = useNavigate();
-    const [yarnItems, setyarnItems] = useState();
+
     const { user } = useCurrentUser();
 
-    const { } = useOrders();
+    console.log("AllOrders. orders:", orders.data);
+
 
     const calcOrderTotalPrice = (order) => {
         const orderTotalPrice = order.yarns.reduce((total, item) => total + (item.price * item.quantity), 0);
@@ -21,6 +22,7 @@ export default function MyOrders({ orders }) {
         <Box>
             <Box>
                 {orders?.data.map(order => {
+                    console.log("AllOrders. currentOrder:", order);
 
                     order.yarns?.map(item => {
                         return (
