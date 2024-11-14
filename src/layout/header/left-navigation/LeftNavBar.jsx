@@ -6,7 +6,7 @@ import NavBarItem from "../../../routes/NavBarItem";
 import { useCurrentUser } from "../../../user/providers/UserProvider";
 
 export default function LeftNavBar() {
-    const user = useCurrentUser();
+    const { user } = useCurrentUser();
     return (
         <Box>
             <LogoIcon />

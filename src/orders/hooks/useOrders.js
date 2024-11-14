@@ -2,12 +2,13 @@ import { useState } from "react";
 import { useCurrentUser } from "../../user/providers/UserProvider";
 import { useNavigate } from "react-router-dom";
 import { useSnack } from "../../utils/providers/SnackbarProvider";
-import { createOrder } from "../services/ordersApiService";
+import { createOrder, getMyOrders } from "../services/ordersApiService";
 
 export default function useOrders() {
     const [isLoading, setIsLoading] = useState();
     const [error, setError] = useState();
     const [order, setOrder] = useState();
+    const [orders, setOrders] = useState();
     const { user, setUser, setToken } = useCurrentUser();
     const navigate = useNavigate();
     const setSnack = useSnack();
@@ -21,8 +22,21 @@ export default function useOrders() {
         try {
             const order = await createOrder(user._id, cart);
             setOrder(order);
+            setSnack("success", "your order has been created");
         } catch (error) {
-            setSnack("error", error)
+            setSnack("error", error.message)
+        }
+        setIsLoading(false);
+    }
+
+    const handleGetMyOrders = async (userId) => {
+        setIsLoading(true);
+        try {
+            const orders = await getMyOrders(userId);
+            setOrders(orders);
+            setSnack("success", "your order has been retrieved");
+        } catch (error) {
+            setSnack("error", error.message)
         }
         setIsLoading(false);
     }
@@ -30,6 +44,10 @@ export default function useOrders() {
         isLoading,
         error,
         order,
-        handleMvCartToOrders
+        orders,
+        setOrders,
+        handleMvCartToOrders,
+        handleGetMyOrders,
+
     }
 }

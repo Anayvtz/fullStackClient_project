@@ -1,7 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import PageHeader from '../../utils/pages/PageHeader';
+import { useCurrentUser } from '../../user/providers/UserProvider';
+import useOrders from '../hooks/useOrders';
+import MyOrdersFeedback from '../components/MyOrdersFeedback';
 
 export default function MyOrdersPage() {
+    const { orders, setOrders, isLoading, error, handleGetMyOrders } = useOrders();
+    const { user } = useCurrentUser();
+
+    useEffect(() => {
+        handleGetMyOrders(user?._id);
+    }, [user._id]);
+
     return (
-        <div>MyOrdersPage</div>
-    )
+        <div>
+            <PageHeader
+                title="MyOrders"
+                subtitle="On this page you can find all the orders you made"
+            />
+            <MyOrdersFeedback
+                orders={orders}
+                isLoading={isLoading}
+                error={error}
+            />
+        </div>
+    );
 }

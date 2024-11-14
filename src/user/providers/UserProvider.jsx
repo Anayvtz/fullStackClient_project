@@ -12,7 +12,8 @@ export default function UserProvider({ children }) {
             const userFromLocalStorage = getUser();
             setUser(userFromLocalStorage);
         }
-    }, [user]);
+        setEmail(getEmail());
+    }, [user, email]);
     return (
         <UserContext.Provider value={{ user, setUser, token, setToken, email, setEmail }}>
             {children}
