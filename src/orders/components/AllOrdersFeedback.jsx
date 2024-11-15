@@ -17,12 +17,16 @@ export default function AllOrdersFeedback({
             </Typography>
         );
 
-    if (orders)
+    if (orders) {
+        console.log("AllOrdersFeedback. orders:", orders);
+
         return (
             <AllOrders
-                orders={orders}
+                ordersRtrvd={orders}
             />
         );
+    }
+
     { console.log("AllOrdersFeedback. after returnAllOrders") }
     return null;
 }

@@ -4,7 +4,7 @@ import { useCurrentUser } from '../../user/providers/UserProvider';
 import PageHeader from '../../utils/pages/PageHeader';
 import AllOrdersFeedback from '../components/AllOrdersFeedback';
 
-export default function MyOrdersPage() {
+export default function AllOrdersPage() {
     const { orders, setOrders, isLoading, error, handleGetAllOrders } = useOrders();
     const { user } = useCurrentUser();
 
@@ -13,6 +13,8 @@ export default function MyOrdersPage() {
             await handleGetAllOrders();
         }
         fetchMyOrders();
+        console.log("after handleGetAllOrders. orders:", orders);
+
     }, []);
 
     return (

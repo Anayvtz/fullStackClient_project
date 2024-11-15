@@ -4,18 +4,25 @@ import { useCurrentUser } from "../../user/providers/UserProvider";
 import { Box, Card, CardContent, CardMedia, Divider, Typography, TextField, Button } from "@mui/material";
 import useOrders from "../hooks/useOrders";
 
-export default function AllOrders({ orders, fetchOrdersByEmail }) {
+export default function AllOrders({ ordersRtrvd }) {
     const navigate = useNavigate();
     const { user } = useCurrentUser();
     const [searchEmail, setSearchEmail] = useState("");
-    const [filteredOrders, setFilteredOrders] = useState(orders?.data || []);
-    const { handleGetOrdersByEmail } = useOrders();
+    const { orders, setOrders, handleGetOrdersByEmail } = useOrders();
+    const [filteredOrders, setFilteredOrders] = useState(ordersRtrvd);
+
+    console.log("ALL ORDERS. filteredOrders: ", filteredOrders);
+    console.log("ALL ORDERS. ordersRtrvd: ", ordersRtrvd);
+    console.log("ALL ORDERS. orders: ", orders);
 
     // This function will be triggered when the user enters an email and clicks search
-    const handleSearch = () => {
+    const handleSearch = async () => {
         if (searchEmail) {
             // Call the fetchOrdersByEmail function passed as a prop with the entered email
-            handleGetOrdersByEmail(searchEmail);
+            await handleGetOrdersByEmail(searchEmail);
+            // setFilteredOrders(orders);
+            console.log("after handleGetOrdersByEmail. filteredOrders:", filteredOrders);
+            console.log("after handleGetOrdersByEmail. orders:", orders)
         }
     };
 
@@ -26,7 +33,8 @@ export default function AllOrders({ orders, fetchOrdersByEmail }) {
 
     // UseEffect to update filtered orders if `orders` prop changes
     useEffect(() => {
-        setFilteredOrders(orders?.data || []);
+        setFilteredOrders(orders);
+        console.log("after useEffect. filteredOrders:", filteredOrders);
     }, [orders]);
 
     return (
@@ -41,7 +49,7 @@ export default function AllOrders({ orders, fetchOrdersByEmail }) {
                     fullWidth
                     sx={{ marginRight: 2 }}
                 />
-                <Button variant="contained" onClick={handleSearch}>Search</Button>
+                <Button variant="contained" onClick={() => handleSearch()}>Search</Button>
             </Box>
 
             {/* Display Orders */}
