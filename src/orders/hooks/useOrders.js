@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useCurrentUser } from "../../user/providers/UserProvider";
 import { useNavigate } from "react-router-dom";
 import { useSnack } from "../../utils/providers/SnackbarProvider";
-import { createOrder, getAllOrders, getMyOrders } from "../services/ordersApiService";
+import { createOrder, getAllOrders, getAllOrdersByEmail, getMyOrders } from "../services/ordersApiService";
 
 export default function useOrders() {
     const [isLoading, setIsLoading] = useState();
@@ -51,6 +51,18 @@ export default function useOrders() {
         }
         setIsLoading(false);
     }
+
+    const handleGetOrdersByEmail = async (userEmail) => {
+        setIsLoading(true);
+        try {
+            const orders = await getAllOrdersByEmail(userEmail);
+            setOrders(orders);
+            setSnack("success", `all orders of user ${userEmail} has been retrieved`);
+        } catch (error) {
+            setSnack("error", error.message)
+        }
+        setIsLoading(false);
+    }
     return {
         isLoading,
         error,
@@ -59,6 +71,7 @@ export default function useOrders() {
         setOrders,
         handleMvCartToOrders,
         handleGetMyOrders,
-        handleGetAllOrders
+        handleGetAllOrders,
+        handleGetOrdersByEmail
     }
 }

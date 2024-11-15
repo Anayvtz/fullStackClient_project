@@ -24,7 +24,7 @@ export default function MyOrders({ orders }) {
                 // Render each order
                 return (
                     <Box key={order._id} sx={{ marginBottom: 4 }}>
-                        <Divider />
+                        <Divider sx={{ marginBottom: 2 }} />
                         {/* Order Headline */}
                         <Box sx={{ marginBottom: 2 }}>
                             <Typography variant="h6" color="primary">
@@ -42,38 +42,40 @@ export default function MyOrders({ orders }) {
                         </Box>
 
                         {/* Render yarn items */}
-                        {order.yarns?.map((item) => {
-                            console.log("AllOrders. yarn item:", item);
+                        {
+                            order.yarns?.map((item) => {
+                                console.log("AllOrders. yarn item:", item);
 
-                            return (
-                                <Box key={item._id}>
-                                    <Card sx={{ display: 'flex', marginBottom: 2 }}>
-                                        <CardMedia
-                                            component="img"
-                                            height="140"
-                                            image={"http://localhost:8185/" + item.image.imageurl}
-                                            alt={item.image.alt}
-                                            sx={{ width: 140 }}
-                                        />
-                                        <CardContent sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', flex: 1 }}>
-                                            <Box sx={{ display: "flex", flexDirection: 'column', flex: 1 }}>
-                                                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 2 }}>
-                                                    <Typography variant="body2" color="textSecondary">
-                                                        Quantity: {item.quantity}
-                                                    </Typography>
-                                                    <Typography variant="body2" color="textSecondary">
-                                                        Price: ${item.price} each
-                                                    </Typography>
-                                                    <Typography variant="h6" color="primary">
-                                                        Total: ${item.price * item.quantity}
-                                                    </Typography>
+                                return (
+                                    <Box key={item._id}>
+                                        <Card sx={{ display: 'flex', marginBottom: 2 }}>
+                                            <CardMedia
+                                                component="img"
+                                                height="140"
+                                                image={"http://localhost:8185/" + item.image.imageurl}
+                                                alt={item.image.alt}
+                                                sx={{ width: 140 }}
+                                            />
+                                            <CardContent sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', flex: 1 }}>
+                                                <Box sx={{ display: "flex", flexDirection: 'column', flex: 1 }}>
+                                                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 2 }}>
+                                                        <Typography variant="body2" color="textSecondary">
+                                                            Quantity: {item.quantity}
+                                                        </Typography>
+                                                        <Typography variant="body2" color="textSecondary">
+                                                            Price: ${item.price} each
+                                                        </Typography>
+                                                        <Typography variant="h6" color="primary">
+                                                            Total: ${item.price * item.quantity}
+                                                        </Typography>
+                                                    </Box>
                                                 </Box>
-                                            </Box>
-                                        </CardContent>
-                                    </Card>
-                                </Box>
-                            );
-                        })}
+                                            </CardContent>
+                                        </Card>
+                                    </Box>
+                                );
+                            })
+                        }
 
                         {/* Render the total price for the entire order after all yarn items */}
                         <Box mt={2} display="flex" justifyContent="flex-end">
@@ -85,6 +87,6 @@ export default function MyOrders({ orders }) {
                 );
             })}
 
-        </Box>
+        </Box >
     );
 }
