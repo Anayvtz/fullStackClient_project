@@ -32,8 +32,8 @@ export default function useOrders() {
     const handleGetMyOrders = async (userId) => {
         setIsLoading(true);
         try {
-            const orders = await getMyOrders(userId);
-            setOrders(orders);
+            const myorders = await getMyOrders(userId);
+            setOrders(myorders);
             setSnack("success", "your order has been retrieved");
         } catch (error) {
             setSnack("error", error.message)
@@ -54,13 +54,14 @@ export default function useOrders() {
         setIsLoading(false);
     }
 
-    const handleGetOrdersByEmail = async (userEmail, setFilteredOrders) => {
+    const handleGetOrdersByEmail = async (userEmail) => {
         setIsLoading(true);
         try {
-            const orders = await getAllOrdersByEmail(userEmail);
-            setOrders(orders.data);
-            setFilteredOrders(orders.data);
-            console.log("after getAllOrdersByEmail:orders:", orders.data);
+            const ordersByEmail = await getAllOrdersByEmail(userEmail);
+            console.log("in handleGetOrdersByEmail.ordersByEmail:", ordersByEmail.data)
+            setOrders(ordersByEmail.data);
+            console.log("in handleGetOrdersByEmail.orders:", orders)
+
 
             setSnack("success", `all orders of user ${userEmail} has been retrieved`);
         } catch (error) {
