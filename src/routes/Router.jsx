@@ -10,6 +10,7 @@ import MyOrdersPage from "../orders/pages/MyOrdersPage";
 import YarnEditPage from "../yarns/pages/YarnEditPage";
 import AddYarnPage from "../yarns/pages/AddYarnPage";
 import AllOrdersPage from "../orders/pages/AllOrdersPage";
+import YarnDetailsPage from "../yarns/pages/YarnDetailsPage";
 
 export default function Router() {
     return (
@@ -29,7 +30,8 @@ export default function Router() {
             <Route path={ROUTES.ALL_ORDERS} element={<AllOrdersPage />} />
             <Route path={ROUTES.EDIT_YARN + "/:id"} element={<YarnEditPage />} />
             <Route path={ROUTES.CREATE_YARN} element={<AddYarnPage />} />
-            {/*<Route path={ROUTES.YARN_INFO + "/:id"} element={<YarnDetailsPage />} />
+            <Route path={ROUTES.YARN_INFO + "/:id"} element={<YarnDetailsPage />} />
+            {/*
             
             
             
