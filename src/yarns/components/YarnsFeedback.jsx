@@ -10,7 +10,10 @@ export default function YarnsFeedback({
     handleDelete,
 }) {
     if (isLoading) return <Spinner />;
-    if (error) return <Error errorMessage={error} />;
+    // if (error) return <Error errorMessage={error} />;
+    if (error) {
+        return <div style={{ color: 'red' }}>Error: {error.message || "Something went wrong"}</div>;
+    }
     if (yarns && yarns.length === 0)
         return (
             <Typography m={2}>

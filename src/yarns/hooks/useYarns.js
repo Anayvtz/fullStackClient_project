@@ -149,7 +149,7 @@ export default function useYarns() {
             setIsLoading(true);
             const yarns = await getYarnBySize(size);
             console.log("yarns are:" + yarns);
-            console.log("user id is:" + user.user._id);
+            console.log("user id is:" + user._id);
             requestStatus(false, null, yarns);
         } catch (error) {
             requestStatus(false, error, null);
