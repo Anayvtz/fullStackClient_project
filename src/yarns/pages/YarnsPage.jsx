@@ -17,10 +17,10 @@ export default function YarnsPage() {
     const handleSizeChange = (event) => {
         const size = event.target.value;
         setSelectedSize(size);
-        if (size) {
-            handleGetYarnBySize(size); // Fetch yarns by selected size
-        } else {
+        if (size === "") {
             getAllYarns(); // Fetch all yarns if no size is selected
+        } else {
+            handleGetYarnBySize(size); // Fetch yarns by selected size
         }
     };
 
@@ -39,7 +39,7 @@ export default function YarnsPage() {
                     onChange={handleSizeChange}
                     style={{ padding: '10px', marginLeft: '10px' }}
                 >
-                    <option value="">All Sizes</option>
+                    <option value="">All Sizes</option> {/* Option for all sizes */}
                     {/* Numeric sizes from 0 to 7 */}
                     {[...Array(8).keys()].map((size) => (
                         <option key={size} value={size}>
