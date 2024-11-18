@@ -13,7 +13,8 @@ const ROUTES = {
     MY_ORDERS: "/my-orders",
     STOCKS: "/stocks",
     EDIT_STOCK: "/edit-stock",
-    ALL_ORDERS: "/all-orders"
+    ALL_ORDERS: "/all-orders",
+    CREATE_STOCK: "/create-stock"
 };
 
 export default ROUTES;

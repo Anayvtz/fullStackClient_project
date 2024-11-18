@@ -77,7 +77,7 @@ const YarnForm = ({
             />
 
             {/* Image URL input (not disabled, editable) */}
-            <Input
+            {/*  <Input
                 name="imageurl"
                 label="Image URL"
                 error={errors.imageurl}
@@ -86,7 +86,7 @@ const YarnForm = ({
                 sm={6}
                 required={false}
                 disabled
-            />
+            /> */}
 
             {/* Drag-and-Drop Upload Box */}
             <div

@@ -11,6 +11,10 @@ import YarnEditPage from "../yarns/pages/YarnEditPage";
 import AddYarnPage from "../yarns/pages/AddYarnPage";
 import AllOrdersPage from "../orders/pages/AllOrdersPage";
 import YarnDetailsPage from "../yarns/pages/YarnDetailsPage";
+import StocksPage from "../stock/pages/StocksPage";
+import EditStockPage from "../stock/pages/EditStockPage";
+import ErrorPage from "../utils/pages/ErrorPage";
+import AddStockPage from "../stock/pages/AddStockPage";
 
 export default function Router() {
     return (
@@ -30,14 +34,12 @@ export default function Router() {
             <Route path={ROUTES.ALL_ORDERS} element={<AllOrdersPage />} />
             <Route path={ROUTES.EDIT_YARN + "/:id"} element={<YarnEditPage />} />
             <Route path={ROUTES.CREATE_YARN} element={<AddYarnPage />} />
+            <Route path={ROUTES.CREATE_STOCK} element={<AddStockPage />} />
             <Route path={ROUTES.YARN_INFO + "/:id"} element={<YarnDetailsPage />} />
-            {/*
-            
-            
-            
             <Route path={ROUTES.STOCKS} element={<StocksPage />} />
             <Route path={ROUTES.EDIT_STOCK + "/:id"} element={<EditStockPage />} />
-            <Route path="*" element={<ErrorPage />} />  */}
+
+            <Route path="*" element={<ErrorPage />} />
 
         </Routes>
     );
