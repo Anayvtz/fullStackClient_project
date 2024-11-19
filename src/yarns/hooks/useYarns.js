@@ -106,6 +106,7 @@ export default function useYarns() {
         try {
             setIsLoading(true);
             await deleteYarn(yarnId);
+            setYarns((prevYarns) => prevYarns.filter((yarn) => yarn._id !== yarnId));
             setIsLoading(false);
         } catch (error) {
             setIsLoading(false);
@@ -158,6 +159,7 @@ export default function useYarns() {
 
     return {
         yarns,
+        setYarns,
         yarn,
         filterYarns,
         error,
