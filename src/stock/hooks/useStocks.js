@@ -81,12 +81,77 @@ export default function useStocks() {
         setIsLoading(false);
     }, []);
 
+    const handleGetStock = useCallback(async (stockId) => {
+        setIsLoading(true);
+        try {
+            const stock = await axios.get(`${apiUrl}/${stockId}`);
+            setStock(stock.data);
+            setIsLoading(false);
+            setSnack("success", `stock ${stockId} has been loaded`);
+
+            return stock.data;
+
+        } catch (error) {
+            console.error("Error handleGetStock making request:", error.message); // Log error message
+            if (error.response) {
+                // The request was made and the server responded with a status code
+                // that falls out of the range of 2xx
+                console.error("Error response data:", error.response.data);
+                console.error("Error response status:", error.response.status);
+                console.error("Error response headers:", error.response.headers);
+            } else if (error.request) {
+                // The request was made but no response was received
+                console.error("No response received for the request:", error.request);
+            } else {
+                // Something happened in setting up the request that triggered an Error
+                console.error("Error setting up the request:", error.message);
+            }
+            setError(error.message);
+            setSnack("error", error.message);
+        }
+        setIsLoading(false);
+    }, []);
+
+    const handleUpdateStock = useCallback(async (stockId, stockFromClient) => {
+        setIsLoading(true);
+        try {
+            console.log("handleUpdateStock. stockId:", stockId);
+            const stock = await axios.patch(`${apiUrl}/${stockId}`, stockFromClient);
+            setStock(stock);
+            setIsLoading(false);
+            setSnack("success", `stock ${stockId} has been updated`);
+
+            return stock;
+
+        } catch (error) {
+            console.error("Error handleUpdateStock making request:", error.message); // Log error message
+            if (error.response) {
+                // The request was made and the server responded with a status code
+                // that falls out of the range of 2xx
+                console.error("Error response data:", error.response.data);
+                console.error("Error response status:", error.response.status);
+                console.error("Error response headers:", error.response.headers);
+            } else if (error.request) {
+                // The request was made but no response was received
+                console.error("No response received for the request:", error.request);
+            } else {
+                // Something happened in setting up the request that triggered an Error
+                console.error("Error setting up the request:", error.message);
+            }
+            setError(error.message);
+            setSnack("error", error.message);
+        }
+        setIsLoading(false);
+    }, []);
+
     return {
         stocks,
         stock,
         error,
         isLoading,
         getAllStocks,
-        handleDelete
+        handleDelete,
+        handleGetStock,
+        handleUpdateStock
     }
 }
