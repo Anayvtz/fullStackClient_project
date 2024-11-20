@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useCurrentUser } from "../providers/UserProvider";
 import { useNavigate } from "react-router-dom";
 import { useSnack } from "../../utils/providers/SnackbarProvider";
@@ -15,6 +15,9 @@ export default function useUsers() {
     const { user, setUser, setToken } = useCurrentUser();
     const navigate = useNavigate();
     const setSnack = useSnack();
+    useEffect(() => {
+        handleGetUserCart();
+    }, []);
 
     useAxios();
     const handleLogin = useCallback(async (userLogin) => {

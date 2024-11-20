@@ -59,10 +59,13 @@ To run the project locally, follow these steps:
 ### 1. **Clone the Repository**
    Clone the repo to your local machine:
    ```bash
-   git clone https://https://github.com/Anayvtz/fullStackClient_project.git
-### 2. **Install dependencies**
+   git clone https://github.com/Anayvtz/fullStackClient_project.git
+
+### 2. **Install Dependencies**
+   To install the dependencies, run the following command:
    ```bash
    npm i
+
 ### 3. **Run the frontend**
 ```bash
 npm run dev

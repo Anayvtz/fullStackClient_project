@@ -33,7 +33,7 @@ export default function AllOrders({ ordersRtrvd }) {
 
     // UseEffect to update filtered orders if `orders` prop changes
     useEffect(() => {
-        setFilteredOrders(orders);
+        setFilteredOrders(prev => orders ?? prev);
         console.log("after useEffect. filteredOrders:", filteredOrders);
     }, [orders]);
 

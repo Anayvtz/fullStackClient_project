@@ -13,7 +13,7 @@ export default function MyOrdersPage() {
             await handleGetMyOrders(user?._id);
         }
         fetchOrders();
-    }, [user._id]);
+    }, [user?._id]);
 
     return (
         <div>

@@ -10,7 +10,7 @@ import useYarns from "../hooks/useYarns";
 import YarnForm from "../components/YarnForm";
 import { Navigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import InitialYarnCtor from "../helpers/initialForm/initialYarnCtor";
+
 
 export default function YarnEditPage() {
     //what do we need in this page
