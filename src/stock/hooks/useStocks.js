@@ -21,7 +21,6 @@ export default function useStocks() {
         setIsLoading(true);
         try {
             const stocks = await axios.get(apiUrl);
-            console.log("getAllStocks. stocks:", stocks);
 
             setStocks(stocks.data);
             setIsLoading(false);
@@ -115,7 +114,6 @@ export default function useStocks() {
     const handleUpdateStock = useCallback(async (stockId, stockFromClient) => {
         setIsLoading(true);
         try {
-            console.log("handleUpdateStock. stockId:", stockId);
             const stock = await axios.patch(`${apiUrl}/${stockId}`, stockFromClient);
             setStock(stock);
             setIsLoading(false);

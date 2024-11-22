@@ -48,7 +48,7 @@ export default function YarnEditPage() {
         const formData = new FormData();
         formData.append('image', file);  // Append the file
         formData.append('yarnId', yarn._id);
-        console.log("YarnEditPage.handleImageUpload formData:", formData);
+
 
         try {
             const response = await fetch('http://localhost:8185/upload-image', {
@@ -70,7 +70,6 @@ export default function YarnEditPage() {
     };
 
     if (!user) return <Navigate replace to={ROUTES.YARNS} />;
-    console.log("YarnEditPage. data:", data);
 
     return (
         <Container

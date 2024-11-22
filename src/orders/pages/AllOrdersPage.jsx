@@ -13,7 +13,6 @@ export default function AllOrdersPage() {
             await handleGetAllOrders();
         }
         fetchMyOrders();
-        console.log("after handleGetAllOrders. orders:", orders);
 
     }, []);
 

@@ -11,18 +11,11 @@ export default function AllOrders({ ordersRtrvd }) {
     const { orders, setOrders, handleGetOrdersByEmail } = useOrders();
     const [filteredOrders, setFilteredOrders] = useState(ordersRtrvd);
 
-    console.log("ALL ORDERS. filteredOrders: ", filteredOrders);
-    console.log("ALL ORDERS. ordersRtrvd: ", ordersRtrvd);
-    console.log("ALL ORDERS. orders: ", orders);
-
     // This function will be triggered when the user enters an email and clicks search
     const handleSearch = async () => {
         if (searchEmail) {
             // Call the fetchOrdersByEmail function passed as a prop with the entered email
             await handleGetOrdersByEmail(searchEmail);
-            // setFilteredOrders(orders);
-            console.log("after handleGetOrdersByEmail. filteredOrders:", filteredOrders);
-            console.log("after handleGetOrdersByEmail. orders:", orders)
         }
     };
 
@@ -34,7 +27,6 @@ export default function AllOrders({ ordersRtrvd }) {
     // UseEffect to update filtered orders if `orders` prop changes
     useEffect(() => {
         setFilteredOrders(prev => orders ?? prev);
-        console.log("after useEffect. filteredOrders:", filteredOrders);
     }, [orders]);
 
     return (

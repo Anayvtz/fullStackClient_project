@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import Error from "../../utils/others/Error";
 import Spinner from "../../utils/others/Spinner";
 import MyOrders from "./MyOrders";

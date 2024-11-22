@@ -61,7 +61,7 @@ export default function YarnAmountControl({ userId, yarnId, yarnImage, yarnPrice
             <Button sx={{ minWidth: '40px' }} onClick={dec} variant="outlined" size="small">
                 <ArrowDownward />
             </Button>
-            {console.log("YarnsAmountControl: userId:", !!userId)}
+
             {!!userId ? (
                 <Button sx={{ marginLeft: 2 }} onClick={async () => await addYarnToCart(userId, yarnInfo)} variant="contained" color="primary" disabled={amount <= 0}>
                     Add

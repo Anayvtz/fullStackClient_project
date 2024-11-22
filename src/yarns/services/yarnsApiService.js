@@ -60,14 +60,11 @@ export const deleteYarn = async (yarnId) => {
 
 export const editYarn = async (yarnId, normalaizedYarn) => {
     try {
-        console.log("editYarn.before put req. normalaizedYarn:", normalaizedYarn);
 
         const { data } = await axios.put(
             `${apiUrl}/yarns/${yarnId}`,
             normalaizedYarn
         );
-        console.log("editYarn. after put req data is:", data);
-
         return data;
     } catch (error) {
         console.log("in editYarn normalizedYarn is:" + normalaizedYarn + " yarnId is:" + yarnId)

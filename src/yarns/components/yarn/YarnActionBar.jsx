@@ -17,10 +17,6 @@ export default function YarnActionBar({
     const { user } = useCurrentUser();
     const navigate = useNavigate();
     const { handleRmvYarnFromCart } = useUsers();
-    /* handleAddYarnToCart(userId, { yarnId: yarnId, image: yarnImage, quantity: 1 }); */
-    console.log("YarnActionBar: userid:", user?._id);
-
-
 
     return (
         <CardActions sx={{ justifyContent: "space-between" }}>

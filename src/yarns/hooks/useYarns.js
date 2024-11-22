@@ -48,13 +48,11 @@ export default function useYarns() {
     const getAllYarns = useCallback(async () => {
         setIsLoading(true);
         try {
-            console.log("getAllYarns B4 axios");
 
             let response = await axios.get(
                 apiUrl
             );
             setYarns(response.data);
-            yarns.map(yarn => console.log("getAllYarns. curr yarn is:", yarn));
             setSnack("success", "All yarns are here!");
         } catch (err) {
             setError(err.message);
@@ -118,10 +116,8 @@ export default function useYarns() {
         async (yarnId, yarnFromClient) => {
             try {
                 setIsLoading(true);
-                console.log("handleUpdateYarn yarnFromClient:", yarnFromClient);
 
                 const yarnAndStock = await editYarn(yarnId, yarnFromClient);
-                console.log("handleUpdateYarn after editYarn. ret yarn::", yarnAndStock.yarn);
                 requestStatus(false, null, null, yarnAndStock.yarn);
                 setSnack("success", "The yarn has been successfully updated");
                 setTimeout(() => {
@@ -149,8 +145,6 @@ export default function useYarns() {
         try {
             setIsLoading(true);
             const yarns = await getYarnBySize(size);
-            console.log("yarns are:" + yarns);
-            console.log("user id is:" + user._id);
             requestStatus(false, null, yarns);
         } catch (error) {
             requestStatus(false, error, null);

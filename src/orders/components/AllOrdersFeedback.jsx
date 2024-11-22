@@ -18,7 +18,6 @@ export default function AllOrdersFeedback({
         );
 
     if (orders) {
-        console.log("AllOrdersFeedback. orders:", orders);
 
         return (
             <AllOrders
@@ -27,6 +26,5 @@ export default function AllOrdersFeedback({
         );
     }
 
-    { console.log("AllOrdersFeedback. after returnAllOrders") }
     return null;
 }

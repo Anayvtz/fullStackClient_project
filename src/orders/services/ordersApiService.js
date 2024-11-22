@@ -5,7 +5,6 @@ const apiUrl = "http://localhost:8185/orders";
 
 export const createOrder = async (userId, cart) => {
     try {
-        console.log("createOrder. userId:", userId);
 
         const order = await axios.post(`${apiUrl}/${userId}`, cart);
         return order;
@@ -30,7 +29,6 @@ export const createOrder = async (userId, cart) => {
 
 export const getMyOrders = async (userId) => {
     try {
-        console.log("getMyOrders. userId:", userId);
 
         const orders = await axios.get(`${apiUrl}/my-orders/${userId}`);
         return orders;
@@ -78,7 +76,6 @@ export const getAllOrders = async () => {
 export const getAllOrdersByEmail = async (userEmail) => {
     try {
         const user = await getUserByEmail(userEmail);
-        console.log("getAllOrdersByEmail. getUserByEmail " + userEmail + "user:", user);
 
         const orders = await axios.get(`${apiUrl}/search?customerId=${user[0]._id}`);
         return orders;

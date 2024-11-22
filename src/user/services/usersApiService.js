@@ -14,7 +14,6 @@ export const login = async (userLogin) => {
 
 export const signup = async (normalizeUser) => {
     try {
-        console.log("signup. normalizeUser is:", normalizeUser);
 
         const { data } = await axios.post(apiUrl, normalizeUser);
         return data;
@@ -89,7 +88,7 @@ export const getUserCart = async (userId) => {
         const { data } = await axios.get(`${apiUrl}/${userId}/cart`);
         return data;
     } catch (error) {
-        console.error("Error rmvYarnFromCart making request:", error.message); // Log error message
+        console.error("Error getUserCart making request:", error.message); // Log error message
         if (error.response) {
             // The request was made and the server responded with a status code
             // that falls out of the range of 2xx
@@ -111,7 +110,7 @@ export const getUserByEmail = async (userEmail) => {
         const { data } = await axios.get(`${apiUrl}/search?email=${userEmail}`);
         return data;
     } catch (error) {
-        console.error("Error rmvYarnFromCart making request:", error.message); // Log error message
+        console.error("Error getUserByEmail making request:", error.message); // Log error message
         if (error.response) {
             // The request was made and the server responded with a status code
             // that falls out of the range of 2xx

@@ -15,9 +15,7 @@ export default function useUsers() {
     const { user, setUser, setToken } = useCurrentUser();
     const navigate = useNavigate();
     const setSnack = useSnack();
-    useEffect(() => {
-        handleGetUserCart();
-    }, []);
+
 
     useAxios();
     const handleLogin = useCallback(async (userLogin) => {
@@ -88,7 +86,6 @@ export default function useUsers() {
     const handleAddYarnToCart = useCallback(async (userId, yarnInfo) => {
         setIsLoading(true);
         try {
-            console.log("handleAddYarnToCart. B4 addYarnToCart to userid:", userId);
 
             const mycart = await addYarnToCart(yarnInfo, userId);
             setCart(mycart);

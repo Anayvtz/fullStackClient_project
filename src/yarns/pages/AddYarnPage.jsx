@@ -39,13 +39,8 @@ export default function AddYarnPage() {
             });
 
             // Step 2: If there's an image, upload it after creating the yarn
-            console.log("B4 formData.imageurl", formData.imageurl);
-            console.log("B4 formData:", formData);
-            console.log("B4 formData.image.imageurl", formData.image?.imageurl);
 
             if (formData.image.imageurl) {
-                console.log("if formData.imageurl:", formData.image.imageurl);
-                console.log("if formData.imageurl:yarn:", newYarn);
 
                 const formDataImage = new FormData();
                 formDataImage.append('image', formData.image.imageurl);  // Assuming imageurl is a file
@@ -53,11 +48,6 @@ export default function AddYarnPage() {
 
                 const imageResponse = await axios.post('http://localhost:8185/upload-image', formDataImage);
                 const updatedYarn = imageResponse.data;
-                console.log("after upload req. updatedYarn:", updatedYarn);
-                /* // Step 3: Update the yarn's imageurl in the database
-                await axios.put(`http://localhost:8185/yarns/${newYarn._id}`, {
-                    imageurl: updatedYarn.image.imageurl,
-                }); */
 
                 // Optionally, update the form with the new image URL
                 setData((prevData) => ({

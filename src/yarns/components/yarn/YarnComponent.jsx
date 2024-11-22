@@ -14,7 +14,6 @@ export default function YarnComponent({
 }) {
     const navigate = useNavigate();
     const { user } = useCurrentUser();
-    console.log("YarnComponent. userid:", user?._id);
 
     return (
         <Card sx={{ width: 250, m: 2 }}>

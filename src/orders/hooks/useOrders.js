@@ -17,7 +17,6 @@ export default function useOrders() {
 
     const handleMvCartToOrders = async (cart) => {
         setIsLoading(true);
-        console.log("handleMvCartToOrders. cart is:", cart);
 
         try {
             const order = await createOrder(user._id, cart);
@@ -33,7 +32,7 @@ export default function useOrders() {
         setIsLoading(true);
         try {
             const myorders = await getMyOrders(userId);
-            setOrders(myorders);
+            setOrders(myorders.data);
             setSnack("success", "your order has been retrieved");
         } catch (error) {
             setSnack("error", error.message)
@@ -44,9 +43,7 @@ export default function useOrders() {
         setIsLoading(true);
         try {
             const allorders = await getAllOrders();
-            console.log("in handleGetAllOrders. orders.data:", allorders.data);
             setOrders(allorders.data);
-            console.log("in handleGetAllOrders. orders:", orders);
             setSnack("success", "all orders has been retrieved");
         } catch (error) {
             setSnack("error", error.message)
@@ -58,10 +55,7 @@ export default function useOrders() {
         setIsLoading(true);
         try {
             const ordersByEmail = await getAllOrdersByEmail(userEmail);
-            console.log("in handleGetOrdersByEmail.ordersByEmail:", ordersByEmail.data)
             setOrders(ordersByEmail.data);
-            console.log("in handleGetOrdersByEmail.orders:", orders)
-
 
             setSnack("success", `all orders of user ${userEmail} has been retrieved`);
         } catch (error) {

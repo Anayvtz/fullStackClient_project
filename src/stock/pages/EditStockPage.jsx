@@ -28,8 +28,6 @@ export default function EditStockPage() {
         initialStockForm,
         stockSchema,
         () => {
-            console.log("in useForm before handleUpdateStock. data:", data);
-            console.log("in useForm before handleUpdateStock. stock:", stock);
             handleUpdateStock(stock._id, {
                 ...data
             });

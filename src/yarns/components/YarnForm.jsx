@@ -23,7 +23,7 @@ const YarnForm = ({
             }
         },
     });
-    console.log("YarnForm. data:", data);
+
     return (
         <Form
             onSubmit={() => onSubmit(data)}

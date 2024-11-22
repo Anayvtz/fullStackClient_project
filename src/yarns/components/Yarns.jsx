@@ -8,8 +8,7 @@ export default function Yarns({ yarns, handleDelete, handleEdit }) {
 
     return (
         <Container sx={{ display: "flex", flexWrap: "wrap" }}>
-            {/* {yarns.map((yarn) =>
-                console.log("Yarns. yarn:", yarn))} */}
+
             {yarns.map((yarn) => (
                 <YarnComponent
                     yarn={yarn}

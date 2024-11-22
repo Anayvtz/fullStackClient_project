@@ -8,8 +8,6 @@ export default function MyOrders({ orders }) {
     const navigate = useNavigate();
     const { user } = useCurrentUser();
 
-    console.log("AllOrders. orders:", orders.data);
-
     const calcOrderTotalPrice = (order) => {
         // Calculate the total price for the entire order by summing the individual item prices
         return order.yarns.reduce((total, item) => total + (item.price * item.quantity), 0);
@@ -18,8 +16,7 @@ export default function MyOrders({ orders }) {
     return (
         <Box>
 
-            {orders?.data.map((order) => {
-                console.log("AllOrders. currentOrder:", order);
+            {orders?.map((order) => {
 
                 // Render each order
                 return (
@@ -44,7 +41,6 @@ export default function MyOrders({ orders }) {
                         {/* Render yarn items */}
                         {
                             order.yarns?.map((item) => {
-                                console.log("AllOrders. yarn item:", item);
 
                                 return (
                                     <Box key={item._id}>
